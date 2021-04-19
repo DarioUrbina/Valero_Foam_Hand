@@ -1,25 +1,25 @@
 %% initialization
 clear all;close all;
 %clc; %#ok<CLALL>                                                          % cleaning the Workspace and Command Windows
-file_name_1='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_0410\test_hand_single_0410_1';     % the data file name
+file_name_1='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_6sensors_0410\test_hand_single_0410_1';     % the data file name
 data_1 = importdata(strcat(file_name_1,'.txt'));                           
-file_name_2='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_0410\test_hand_single_0410_2'; 
+file_name_2='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_6sensors_0410\test_hand_single_0410_2'; 
 data_2 = importdata(strcat(file_name_2,'.txt'));                           
-file_name_3='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_0410\test_hand_single_0410_3'; 
+file_name_3='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_6sensors_0410\test_hand_single_0410_3'; 
 data_3 = importdata(strcat(file_name_3,'.txt'));                           
-file_name_4='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_0410\test_hand_single_0410_4'; 
+file_name_4='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_6sensors_0410\test_hand_single_0410_4'; 
 data_4 = importdata(strcat(file_name_4,'.txt'));                           
-file_name_5='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_0410\test_hand_single_0410_5'; 
+file_name_5='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_6sensors_0410\test_hand_single_0410_5'; 
 data_5 = importdata(strcat(file_name_5,'.txt'));                           
-file_name_6='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_0410\test_hand_single_0410_6'; 
+file_name_6='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_6sensors_0410\test_hand_single_0410_6'; 
 data_6 = importdata(strcat(file_name_6,'.txt'));                          
-file_name_7='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_0410\test_hand_single_0410_7'; 
+file_name_7='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_6sensors_0410\test_hand_single_0410_7'; 
 data_7 = importdata(strcat(file_name_7,'.txt'));                          
-file_name_8='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_0410\test_hand_single_0410_8'; 
+file_name_8='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_6sensors_0410\test_hand_single_0410_8'; 
 data_8 = importdata(strcat(file_name_8,'.txt'));                            
-file_name_9='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_0410\test_hand_single_0410_9'; 
+file_name_9='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_6sensors_0410\test_hand_single_0410_9'; 
 data_9 = importdata(strcat(file_name_9,'.txt'));                            
-file_name_10='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_0410\test_hand_single_0410_10'; 
+file_name_10='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_6sensors_0410\test_hand_single_0410_10'; 
 data_10 = importdata(strcat(file_name_10,'.txt'));                          
 
 data = [data_1;data_2;data_3;data_4;data_5;data_6;data_7;data_8;data_9;data_10];
@@ -35,7 +35,7 @@ donwsampled_and_labeled_data(:,end)=labels;                                % ass
 figure(); plot(donwsampled_and_labeled_data(:,1:4))                        % plotting sensor readings
 legend(...
     'Sensor 1','Sensor 2','Sensor 3','Sensor 4', 'location', 'southeast')  % setting the plot legend
-csvwrite(file_name,donwsampled_and_labeled_data)                           % writing the preprocessed data into a csv file
+csvwrite(data,donwsampled_and_labeled_data)                           % writing the preprocessed data into a csv file
 %% KNN classification
 rng(99)                                                                   % setting the random seed to a constant to have consistencu across results; can do a cross-validation for the final results
 K=2;                                                                       % setting K in KNN; number of nearest neighbors to be participated in the voting
