@@ -2,10 +2,12 @@
 clear all;close all;
 %clc; %#ok<CLALL>                                                          % cleaning the Workspace and Command Windows
 
-number_of_labels = 5 ;
-number_of_sensors = 10 ;
+number_of_labels = 8 ;
+number_of_sensors = 9 ;
+donwsampling_rate = 100;  
+downsampling_starting_point = 50;
 
-file_name_1='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_10sensors_0411\test_hand_single_0411_1';     % the data file name
+file_name_1='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_10sensors_foamhand_0416\test_hand_single_right 0416_5';     % the data file name
 data = importdata(strcat(file_name_1,'.txt'));                           
 % 
 % file_name_1='C:\Users\dario\Documents\Github\Valero_Foam_Hand\Data\Data_6sensors_0410\test_hand_single_0410_1';
@@ -31,8 +33,10 @@ data = importdata(strcat(file_name_1,'.txt'));
 % 
 % data = [data;data_2;data_3;data_4;data_5;data_6;data_7;data_8;data_9;data_10];
 
-donwsampling_rate = 50;                                                    % the downsampling rate
-downsampled_data = downsample(data(25:end,:),donwsampling_rate);           % downsampling the data   
+                                                  % the downsampling rate
+figure(); plot(data(1:7000,1:number_of_sensors))
+data = data(1:7000,1:9);
+downsampled_data = downsample(data(downsampling_starting_point:end,:),donwsampling_rate);           % downsampling the data   
 donwsampled_and_labeled_data =...
     zeros(floor(size(data,1)/donwsampling_rate), size(data,2)+1);          % pre-alocating donwsampled_and_labeled_data
 repeated_labels=repmat(1:number_of_labels,1,ceil(size(downsampled_data,1)/number_of_labels));            % generaqting labels
@@ -60,4 +64,7 @@ plot(test_data(end,:)','color',[0, 0.4470, 0.7410, alpha_value],...
     'linewidth',3);hold on;                                                % plotting the test results
 plot(KNNPred,'color',[0.8500, 0.3250, 0.0980, alpha_value],'linewidth',2); % plotting the test results
 legend('test labels','predicted labels')                                   % test result legends
+%figure()
 plotconfusion(categorical(test_data(end,:)'),categorical(KNNPred))         % plotting the confusion matrix
+%cm = confusionchart(categorical(test_data(end,:)),categorical(KNNPred));
+%sortClasses(cm,["1","2","3","4","5"])
