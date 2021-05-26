@@ -35,8 +35,8 @@ const int FLEX_PIN_7 = A8;  //2 pinky
 const int FLEX_PIN_8 = A9;  //2 ring
 const int FLEX_PIN_9 = A10;  //2 middle
 const int FLEX_PIN_10 = A11;  //2 index
-const int FLEX_PIN[] = {FLEX_PIN_1, FLEX_PIN_5, FLEX_PIN_4, FLEX_PIN_3, FLEX_PIN_2, FLEX_PIN_6,FLEX_PIN_10,FLEX_PIN_9,FLEX_PIN_8,FLEX_PIN_7}; //Long sensor, short sensor. From pinky to thumb?
-                     //{3 Thumb,    3 Index,    3 Middle,   3 Ring,     3 Pinky,     2 Thumb,   2 index,   2 middle,   2 ring,    2 pinky}
+const int FLEX_PIN[] = {FLEX_PIN_6, FLEX_PIN_5, FLEX_PIN_4, FLEX_PIN_3, FLEX_PIN_2, FLEX_PIN_1,FLEX_PIN_10,FLEX_PIN_9,FLEX_PIN_8,FLEX_PIN_7}; //Long sensor, short sensor. From pinky to thumb?
+                     //{2 Thumb,    3 Index,    3 Middle,   3 Ring,     3 Pinky,     1 Thumb,   2 index,   2 middle,   2 ring,    2 pinky}
 
 // Measure the voltage at 5V and the actual resistance of your
 // 47k resistor, and enter them below:
@@ -80,13 +80,13 @@ void loop()
   
   // 2. set and adjust the angle setting by the reading results: angle[i] = map(flexADC[i], 'flat ADC', '180//90 degree ADC', 0, 180.0);
   // need to calibrate every time before testing  
-    angle[0] = map(flexADC[0], 506, 466, 0, 90.0);
+    angle[0] = map(flexADC[0], 821, 792, 0, 90.0); //821, 792
     angle[1] = map(flexADC[1], 509, 438, 0, 90.0);
     angle[2] = map(flexADC[2], 488, 407, 0, 90.0);
     angle[3] = map(flexADC[3], 475, 440, 0, 90.0);
     angle[4] = map(flexADC[4], 507, 469, 0, 90.0);
     //cross first joint
-    angle[5] = map(flexADC[5], 0, 10, 0, 90.0);
+    angle[5] = map(flexADC[5], 506, 466, 0, 90.0); //506, 466
     angle[6] = map(flexADC[6], 449, 480, 0, 90.0);
     angle[7] = map(flexADC[7], 493, 529, 0, 90.0);
     angle[8] = map(flexADC[8], 504, 549, 0, 90.0);
@@ -136,6 +136,7 @@ void loop()
   Serial.println(String(angle[7]));
   Serial.println(String(angle[8]));
   Serial.println(String(angle[9]));
+//  Serial.println(String("."));
 
   
   delay(100);

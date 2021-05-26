@@ -3,8 +3,8 @@ clear all;close all;
 %clc; %#ok<CLALL>                                                          % cleaning the Workspace and Command Windows
 
 
-donwsampling_rate = 100;  
-downsampling_starting_point = 50;
+donwsampling_rate = 100;  %determines the "step" of down sampling (downsampling_starting_point,+100,+200...)
+downsampling_starting_point = 50; %determines which row to start from in the data matrix
 
 %% Foam hand with 10 sensors
 

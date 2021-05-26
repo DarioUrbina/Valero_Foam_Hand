@@ -15,11 +15,11 @@ clear all;
 clc;  % clear all variables
 %%
 
-s = serial('COM8');  
+s = serial('COM3');  
 set(s,'BaudRate',9600);  
 fopen(s);  
  
-wheaston_bridges_lecture =  1200; % for batches calculating
+wheaston_bridges_lecture =  6000; % for batches calculating
 wheaston_bridges = 10;  % for  total sensor numbers    
 total_batches = wheaston_bridges_lecture/wheaston_bridges;
 
@@ -73,4 +73,6 @@ for wb = 1 : wheaston_bridges
     hold on 
 end
 
-legend('sig_1_1','sig_1_2','sig_1_3','sig_1_4');
+%legend( 'angle[9]'   , 'angle[0]'     , 'angle[1]'     , 'angle[2]'      , 'angle[3]'    , 'angle[4]'     , 'angle[5]'     , 'angle[6]'     , 'angle[7]'      , 'angle[8]');
+legend('2 Joint Pinky', '2 Joint Thumb', '3 Joint Index', '3 Joint Middle', '3 Joint Ring', '3 Joint Pinky', '1 Joint Thumb', '2 Joint Index', '2 Joint Middle', '2 Joint Ring');
+%note that different total batches changes the order of the labels above ^^
