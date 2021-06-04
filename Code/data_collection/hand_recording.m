@@ -19,7 +19,7 @@ s = serial('COM3');
 set(s,'BaudRate',9600);  
 fopen(s);  
  
-wheaston_bridges_lecture =  6000; % for batches calculating
+wheaston_bridges_lecture =  15000; % for batches calculating
 wheaston_bridges = 10;  % for  total sensor numbers    
 total_batches = wheaston_bridges_lecture/wheaston_bridges;
 
