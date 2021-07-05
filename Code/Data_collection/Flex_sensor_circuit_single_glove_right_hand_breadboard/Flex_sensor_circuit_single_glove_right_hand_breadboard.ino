@@ -81,36 +81,28 @@ void loop()
   
     // 2. set and adjust the angle setting by the reading results: angle[i] = map(flexADC[i], 'flat ADC', '180//90 degree ADC', 0, 180.0);
     // need to calibrate every time before testing  
-      angle[0] = map(flexADC[0], 813, 767, 0, 90.0); //821, 792
-      angle[1] = map(flexADC[1], 483, 417, 0, 90.0);
-      angle[2] = map(flexADC[2], 457, 392, 0, 90.0);
-      angle[3] = map(flexADC[3], 463, 369, 0, 90.0);
-      angle[4] = map(flexADC[4], 457, 393, 0, 90.0);
+      angle[0] = map(flexADC[0], 433, 683, 0, 90.0); //821, 792
+      angle[1] = map(flexADC[1], 163, 776, 0, 90.0);
+      angle[2] = map(flexADC[2], 146, 350, 0, 90.0);
+      angle[3] = map(flexADC[3], 129, 680, 0, 90.0);
+      angle[4] = map(flexADC[4], 174, 709, 0, 90.0);
       //cross first joint
-      angle[5] = map(flexADC[5], 437, 428, 0, 90.0); //506, 466
-      angle[6] = map(flexADC[6], 511, 558, 0, 90.0);
-      angle[7] = map(flexADC[7], 556, 601, 0, 90.0);
-      angle[8] = map(flexADC[8], 534, 581, 0, 90.0);
-      angle[9] = map(flexADC[9], 492, 545, 0, 90.0);
+      angle[5] = map(flexADC[5], 181, 528, 0, 90.0); //506, 466
+      angle[6] = map(flexADC[6], 251, 853, 0, 90.0);
+      angle[7] = map(flexADC[7], 304, 666, 0, 90.0);
+      angle[8] = map(flexADC[8], 304, 857, 0, 90.0);
+      angle[9] = map(flexADC[9], 271, 889, 0, 90.0);
   
     //Serial.println("Resistance: " + String(flexR) + " ohms");
     //Serial.println("Resistance: " + String(flexR) + " ohms");
     // Use the calculated resistance to estimate the sensor's
     // bend angle:
       //  //3. testing the bend angle:
-        //Serial.println(String(flexADC[0]));
-        //Serial.println(String(flexADC[1]));
-        //Serial.println(String(flexADC[2]));
-        //Serial.println(String(flexADC[3]));
-        //Serial.println(String(flexADC[4]));
-
-        //Serial.println(String("."));
-        
-        //Serial.println(String(flexADC[5]));
-        //Serial.println(String(flexADC[6]));
-        //Serial.println(String(flexADC[7]));
-        //Serial.println(String(flexADC[8]));
-        //Serial.println(String(flexADC[9]));
+      //  Serial.println(String(flexADC[0]));
+      //  Serial.println(String(flexADC[1]));
+      //  Serial.println(String(flexADC[2]));
+      //  Serial.println(String(flexADC[3]));
+      //  Serial.println(String(flexADC[4]));
       
       ////  
       //  Serial.println("Bend: " + String(angle[0]) + " degrees");
@@ -121,7 +113,11 @@ void loop()
       //  Serial.println("Bend: " + String(angle[5]) + " degrees");
       //  Serial.println();
       //
-
+      //  Serial.println(String(flexADC[5]));
+      //  Serial.println(String(flexADC[6]));
+      //  Serial.println(String(flexADC[7]));
+      //  Serial.println(String(flexADC[8]));
+      //  Serial.println(String(flexADC[9]));
       //  
       //  Serial.println("Bend: " + String(angle[6]) + " degrees");
       //  Serial.println("Bend: " + String(angle[7]) + " degrees");
@@ -142,7 +138,7 @@ void loop()
     Serial.println(String(angle[7]));
     Serial.println(String(angle[8]));
     Serial.println(String(angle[9]));
-//    Serial.println(String("___________"));
+   Serial.println(String("."));
   
   delay(100);
 }
