@@ -66,7 +66,7 @@ data = [data;data_2];
  data_8 = importdata(strcat(file_name_8,'.txt'));                            
  file_name_9= append(MainDir,'\Data\Data_6sensors_0410\test_hand_single_0410_9') 
  data_9 = importdata(strcat(file_name_9,'.txt'));                            
- file_name_10= append(MainDir,'\Data\Data_6sensors_0410\test_hand_single_0410_10') 
+ file_name_10= append(MainDir,'\Data\Data_6sensors_0410\test_hand_single_0410_1-') 
  data_10 = importdata(strcat(file_name_10,'.txt'));                          
 %
  data = [data;data_2;data_3;data_4;data_5;data_6;data_7;data_8;data_9;data_10];
