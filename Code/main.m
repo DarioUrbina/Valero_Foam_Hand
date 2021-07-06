@@ -74,8 +74,9 @@ data = [data;data_2];
 %}
 
 %% Downsampling?
-                                                 
-figure(1); plot(data(1:number_of_data_values,1:number_of_sensors)) %Presents the undownsampled data in graph form
+
+HFig1 = figure;
+figure(HFig1); plot(data(1:number_of_data_values,1:number_of_sensors)) %Presents the undownsampled data in graph form
 
 data = data(1:number_of_data_values,1:number_of_sensors); %Changes data into a data_values x number_of_sensors matrix
 downsampled_data = downsample(data(downsampling_starting_point:end,:),donwsampling_rate);           % downsampling the data  decreases the sample rate of data by keeping the first sample and then every (downsampling_rate)th sample after the first. If data is a matrix, the function treats each column as a separate sequence  
@@ -94,7 +95,8 @@ downsampled_and_labeled_data(:,end)=labels;                                % ass
 %legend(...
  %   'Sensor 1','Sensor 2','Sensor 3','Sensor 4','Sensor 5','Sensor 6', 'location', 'southeast')  % setting the plot legend
 csvwrite('downsampled_and_labeled_data',downsampled_and_labeled_data)                           % writing the preprocessed data into a csv file
-figure(); plot(downsampled_and_labeled_data(1:number_of_labels,:))                         % plotting sensor readings
+HFig2 = figure;
+figure(HFig2); plot(downsampled_and_labeled_data(1:number_of_labels,:))                         % plotting sensor readings
 %doesn't show up for some reason. Put into console ^
 
 %% KNN classification
@@ -111,11 +113,16 @@ accuracy=sum((KNNPred-test_data(end,:)')==0)/length(KNNPred);              % cal
 disp(['accuracy is ', num2str(100*accuracy), '%'])                         % displaying accuracy percentage on the Command Window
 %% plotting classification results
 alpha_value = .5;                                                          % transparency of plot lines
+
+HFig3 = figure;
+figure(HFig3)
 plot(test_data(end,:)','color',[0, 0.4470, 0.7410, alpha_value],...
     'linewidth',3);hold on;                                                % plotting the test results
 plot(KNNPred,'color',[0.8500, 0.3250, 0.0980, alpha_value],'linewidth',2); % plotting the test results
 legend('test labels','predicted labels')                                   % test result legends
-%figure()
+
+HFig4 = figure;
+figure(HFig4)
 plotconfusion(categorical(test_data(end,:)'),categorical(KNNPred))         % plotting the confusion matrix
 %cm = confusionchart(categorical(test_data(end,:)),categorical(KNNPred));
 %sortClasses(cm,["1","2","3","4","5"])
